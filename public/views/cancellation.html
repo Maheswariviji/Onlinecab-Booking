@@ -1,0 +1,35 @@
+<ul class="nav navbar-nav" style="float: right;">
+                    <li>
+
+                        <a href="#/home">Home</a>
+                    </li>
+                    <!-- <li>
+                        <a href="#/movies">Movies</a>
+                    </li> -->
+
+                    <li>
+                         <a href="#/trailer">Trailers</a>
+                    </li>
+                    <li>
+                         <a href="#/cancellation">Cancellation</a>
+                    </li>
+                     <li>
+                     <div ng-controller="AdminController as vm" >
+                      <a ng-if="vm.IsShow" ng-show="adminpg" href="#/admin">Admin</a>
+                      </div>
+                    </li>
+                   <li>
+                      <div ng-controller="LoginController as vm" style="margin-left: 29%;margin-top: 41%;">
+                      <div ng-if="!vm.IsShow">
+                      <a ng-click="vm.IsShow=!vm.IsShow" href="#/login" class="link">Login</button>
+                      </div>
+                      <div ng-if="vm.IsShow" style="margin-left: 28%;margin-top: 35%;" >
+            <a href="#/home" ng-click="vm.IsShow=!vm.IsShow" class="link">Logout</a>
+
+        </div>
+        </div>
+                    </li>
+
+
+            </ul>
+

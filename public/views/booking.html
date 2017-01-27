@@ -1,0 +1,119 @@
+<style>
+.heading
+{
+  width: 45%;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    margin-left: 27%;
+    font-size: xx-large;
+}
+.tablestyle
+{
+  border-style: hidden;
+}
+.td
+{
+  padding: 0px 0px 0px 51px;
+    font-weight: 700;
+    padding-bottom: 15px;
+}
+.th
+{
+  padding-bottom: 15px;
+}
+._jw-tpk-container 
+{
+      margin-bottom: -7%;
+}
+</style>
+<body>
+
+
+<div class="container" >
+    <div class="row">
+    <button type="button" class="btn btn-primary btn-lg btn-block heading">Book A Cab</button>
+      <div class="col-md-1"></div>
+
+        <div class="col-md-5">
+        
+        <table class="table">
+            <tbody>
+            <tr class="tablestyle">
+<th>Booking ID</th><td>
+<input id="randomnumber"  />
+<!-- ng-model="
+bking.bookingID"  -->
+</td>
+</tr>
+    <tr class="tablestyle">
+        <th>Choose City</th><td><select ng-model="bking.city" >
+  <option ng-repeat="city in citylist" ng-value="city.cityName">{{city.cityName}}</option>
+  <!-- <option ng-repeat="mapped in mappedlist" ng-value="mapped.city">{{mapped.city}}</option> -->
+            </select></td> 
+    </tr>
+    <tr class="tablestyle">
+        <th>Choose CabType</th><td><select id="cab1"  ng-model="bking.cabType" >
+  <!-- ng-change="cabtype()"  <option ng-repeat="car in carlist" ng-value="car.carType">{{car.carType}}</option> -->
+    <option ng-repeat="mapped in mappedlist | filter: bking.city | unique :'carType'" ng-value="mapped.carType">{{mapped.carType}}</option>
+            </select></td> 
+    </tr>
+    <tr class="tablestyle">
+       <th>Pickup Locality/Area</th><td><select  id="pickuploc"  ng-model="bking.pickupLoc" ng-change="onChange()" >
+
+    <option id="pickloc" ng-repeat="mapped in mappedlist | filter: bking.cabType | filter:bking.city " ng-value="mapped.location">{{mapped.location}}</option>
+  <!-- <option ng-repeat="loca in localist| filter: bking.city |filter:bking.cabType" ng-value="loca.locName">{{loca.locName}}</option> -->
+            </select></td> 
+    </tr>
+    
+    <tr class="tablestyle">
+   <th>Drop Locality/Area</th><td><select  id="droploc"  ng-model="bking.dropLoc" ng-change="get()">
+  <option  ng-repeat="loca in localist| filter: bking.city" >{{loca.locName}}</option>
+            </select></td> 
+    </tr>
+    
+    <tr class="tablestyle">
+    <th>Pickup Date</th>
+    <td><input type="date" ng-blur="checkDate" id="dt" ng-model="bking.Date"/></td>
+    </tr>
+    <tr class="tablestyle">
+    <th>Time</th>
+    <td>
+    <!-- <input type="time" ng-model="bking.Time"  id="myTime" ng-model="bking.Time" /> -->
+    <input type="text" id="time" placeholder="Time" />
+    </td></tr>
+<!-- onchange="check()" -->
+<tr class="tablestyle">
+<td>
+<button ng-click="addbk()" class="btn btn-primary" >Traveller Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+        </div>
+        <div class="col-md-5" ng-show="details">
+           <table >
+           <tbody>
+               <tr class="tablestyle" >
+                 <th class="th">Mininum Bill Charge</th><td  class="td" id="mBill"></td></tr></br>
+                  <tr class="tablestyle">
+                  <th class="th">Free KM's</th><td   class="td" id="KM"></td></tr>
+                <tr class="tablestyle">
+                  <th class="th">Waiting Charge</th><td class="td" id="wCharge" ></td></tr>
+                  <tr class="tablestyle">
+                  <th class="th">Extra PerKM Charge</th><td class="td" id="amt"></td></tr>
+                  <tr class="tablestyle">
+                  <th class="th">Distance in Kms</th><td class="td" id="distance"></td></tr>
+                  
+                  <tr class="tablestyle">
+                  <th class="th">Driving Time</th><td class="td" id="dtime"></td></tr>
+                  
+                  <tr class="tablestyle">
+                  <th class="th">Approximate Taxi Fare</th><td class="td" id="fare"></td></tr>
+                  
+           </tbody>
+           </table>
+        </div>
+        <div class="col-md-1"></div>
+        </div>
+        </div>
+        </body>

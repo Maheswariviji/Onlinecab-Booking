@@ -1,0 +1,431 @@
+<head>
+
+<style>
+.panel-body .btn:not(.btn-block) { width:320px;margin-bottom:10px; }
+.align
+{
+        margin-left: 14%;
+    margin-top: 2%;
+}
+.panel-title
+{
+        margin-left: 38%;
+}
+.mybtn
+       {
+        background-color: #222;
+        color: white;
+        }
+        .tablestyle
+{
+  border-style: hidden;
+}
+</style>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+      <div class="col-md-1"></div>
+
+        <div class="col-md-10">
+            <div class="panel panel-mybtn">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Welcome !!! Admin</h3>
+                </div>
+                <div class="panel-body align" >
+                    <div class="row">
+                        <div >
+                          <a data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-plus"></span> <br/>Add City</a>
+                          <a  data-toggle="modal" data-target="#myModal1"  class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-plus"></span> <br/>Add locality</a>
+                          <a data-toggle="modal" data-target="#myModal2" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-plus"></span> <br/>Add Car Type</a>
+                           <a data-toggle="modal" data-target="#myModal3"  class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> <br/>Add Driver
+                        </a>
+                         
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div >
+                          <a data-toggle="modal" data-target="#myModal4" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-cog"></span> <br/>Mapping Car and City</a>
+                          <a  data-toggle="modal" data-target="#myModal5" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-check"></span> <br/>Assign Cab to Booking</a>
+ <a data-toggle="modal" data-target="#myModal6" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-th-list"></span> <br/>View Booking</a>
+                          <a data-toggle="modal" data-target="#myModal7"  class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-file"></span> <br/>View Bills</a>
+                         
+                          
+                        </div></div>
+                    </div>
+                    
+                </div>
+            </div>  <div class="col-md-1"></div>
+
+        </div>
+    </div>
+</body>
+<!-- Add City -->
+  <div class="modal fade" id="myModal" role="dialog" >
+    <div class="modal-dialog modal-lg" style="width:100%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add City</h4>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+							           
+                          <tbody>
+							                  <tr class="tablestyle">
+                  <th>City Name</th><td><input type="text"  ng-model="city.cityName" /></td></tr>
+                  
+                 <tr class="tablestyle"><td><button ng-click="addCity()" class="btn btn-primary">Add</button></td>
+                          <td><button ng-click="updateCity()" class="btn btn-primary">Update</button></td></tr>
+
+                 <tr> </tr>         							                <tr>
+                 <th>City ID</th>
+
+                            <th>Car Name</th>
+                                  
+                                  </tr>
+                                  <tr ng-repeat=" city in citylist">
+
+							                    <td>{{city.cityID=$index+1}}</td>
+							                    <td>{{city.cityName}}</td>
+                                  
+							                    <td><button ng-click="removeCity(city)" class="btn btn-danger">Remove</button></td>
+							                    <td><button ng-click="editCity(city)" class="btn btn-primary">Edit</button></td>
+                                  </tr>
+
+							            </tbody>
+							 </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Add Locality -->
+   <div class="modal fade" id="myModal1" role="dialog" >
+    <div class="modal-dialog modal-lg" style="width:100%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Locality</h4>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                         
+                          <tbody>
+                                <tr class="tablestyle">
+                  <th>Choose City</th><td><select ng-model="loca.cityName" >
+                                     <option ng-repeat="city in citylist" ng-value="city.cityName">{{city.cityName}}</option>
+          
+                                    </select></td></tr>
+                  <tr class="tablestyle">
+                  <th>Locality</th><td><input type="text"  ng-model="loca.locName" /></td></tr>
+                 <tr class="tablestyle"><td><button ng-click="addloc()" class="btn btn-primary">Add</button></td>
+                          <td><button ng-click="updateloc()" class="btn btn-primary">Update</button></td></tr>
+
+                 <tr> </tr>                                       <tr>
+                 <th>ID</th>
+
+                            <th>City</th>
+                                  <th>Locality</th>
+                                 
+                                  </tr>
+                                  <tr ng-repeat=" loca in localist">
+
+                                  <td>{{loca.locID=$index+1}}</td>
+                                  <td>{{loca.cityName}}</td>
+                                   <td>{{loca.locName}}</td>
+                                  
+                                  <td><button ng-click="removeloc(loca)" class="btn btn-danger">Remove</button></td>
+                                  <td><button ng-click="editloc(loca)" class="btn btn-primary">Edit</button></td>
+                                  </tr>
+
+                          </tbody>
+               </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- Add CarType -->
+  <div class="modal fade" id="myModal2" role="dialog" >
+    <div class="modal-dialog modal-lg" style="width:100%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Cartype</h4>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                         
+                          <tbody>
+                                <tr class="tablestyle">
+                  <th>Car Type</th><td><input type="text" ng-model="car.carType"/></td></tr>
+                  <tr class="tablestyle">
+                 
+                  <th>Mininum Bill Charge</th><td><input type="text" ng-model="car.minBill"/></td></tr>
+                  
+                  <tr class="tablestyle">
+                  <th>Free KM's</th><td><input type="text" ng-model="car.freeKM"/></td></tr>
+                <tr class="tablestyle">
+                  <th>Waiting Charge</th><td><input type="text" ng-model="car.waitingCharge"/></td></tr>
+                  <tr class="tablestyle">
+                  <th>Extra PerKM Charge</th><td><input type="text" ng-model="car.chargeperKM"/></td></tr>
+                 <tr class="tablestyle"><td><button ng-click="addCar()" class="btn btn-primary">Add</button></td>
+                          <td><button ng-click="updateCar()" class="btn btn-primary">Update</button></td></tr>
+
+                 <tr> </tr>                                       <tr>
+                 <th>Car ID</th>
+
+                            <th>Car  Type</th>
+                                  <th>Mininum Bill Charge</th>
+                                  <th>Free KM</th>
+                                  <th>Waiting Charge</th>
+                                  <th>Extra PerKM Chage</th>
+                                  </tr>
+                                  <tr ng-repeat=" car in carlist">
+
+                                  <td>{{car.carID=$index+1}}</td>
+                                  <td>{{car.carType}}</td>
+                                   <td>{{car.minBill}}</td>
+                                    <td>{{car.freeKM}}</td>
+                                     <td>{{car.waitingCharge}}</td>
+                                      <td>{{car.chargeperKM}}</td>
+                                  <td><button ng-click="removeCar(car)" class="btn btn-danger">Remove</button></td>
+                                  <td><button ng-click="editCar(car)" class="btn btn-primary">Edit</button></td>
+                                  </tr>
+
+                          </tbody>
+               </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Add Driver -->
+  <div class="modal fade" id="myModal3" role="dialog" >
+    <div class="modal-dialog modal-lg" style="width:100%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Driver</h4>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                         
+                          <tbody>
+                                <tr class="tablestyle">
+                  <th>Working for which City </th><td><select ng-model="driver.city" >
+                                     <option ng-repeat="city in citylist" ng-value="city.cityName">{{city.cityName}}</option>
+          
+                                    </select></td></tr>
+                  <tr class="tablestyle">
+                 
+                  <th>Locality</th><td><select ng-model="driver.location" >
+                                     <option ng-repeat="loca in localist| filter: driver.city" ng-value="loca.locName">{{loca.locName}}</option>
+          
+                                    </select></td></tr>
+                  
+                  <tr class="tablestyle">
+                  <th>Diver Name</th><td><input type="text" ng-model="driver.driverName"/></td></tr>
+                <tr class="tablestyle">
+                  <th>Address</th><td><input type="text" ng-model="driver.Address"/></td></tr>
+                  <tr class="tablestyle">
+                  <th>Password</th><td><input type="text" ng-model="driver.password"/></td></tr>
+                  <tr class="tablestyle">
+                  <th>Confirm Password</th><td><input type="text" ng-model="driver.confirmpassword"/></td></tr>
+                   <tr class="tablestyle">
+                  <th>Car Name</th><td><input type="text" ng-model="driver.carName"/></td></tr>
+                   <tr class="tablestyle">
+                  <th>Car Type</th><td><select ng-model="driver.carType" >
+                                     <option ng-repeat="car in carlist" ng-value="car.carType">{{car.carType}}</option>
+          
+                                    </select></td></tr>
+                   <tr class="tablestyle">
+                  <th>Car Number</th><td><input type="text" ng-model="driver.carNumber"/></td></tr>
+                   
+                 <tr class="tablestyle"><td><button ng-click="adddriver()" class="btn btn-primary">Add</button></td>
+                      <td><button ng-click="updatedriver()" class="btn btn-primary">Update</button></td></tr>
+
+                                                   <tr>
+                 
+
+                            <th>City</th>
+                                  <th>Locality</th>
+                                  <th>Driver Name</th>
+                                  <th>Address</th>
+                                  <th>Password</th>
+                                   <th>carName</th>
+                                    <th>carNumber</th>
+                                     <th>carType</th>
+                                  </tr>
+                                  <tr ng-repeat=" driver in driverlist">
+
+                                  <td>{{driver.city}}</td>
+                                  <td>{{driver.location}}</td>
+                                   <td>{{driver.driverName}}</td>
+                                    <td>{{driver.Address}}</td>
+                                     <td>{{driver.password}}</td>
+                                      <td>{{driver.carName}}</td>
+                                      <td>{{driver.carNumber}}</td>
+                                      <td>{{driver.carType}}</td>
+
+                                  <td><button ng-click="removedriver(driver)" class="btn btn-danger">Remove</button></td>
+                                  <td><button ng-click="editdriver(driver)" class="btn btn-primary">Edit</button></td>
+                                  </tr>
+
+                          </tbody>
+               </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mapping car with city -->
+    <div class="modal fade" id="myModal4" role="dialog" >
+    <div class="modal-dialog modal-lg" style="width:100%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Mapping car with city</h4>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                         
+                          <tbody>
+                                <tr class="tablestyle">
+                  <th>City</th><td><select ng-model="mapped.city" >
+  <option ng-repeat="city in citylist" ng-value="city.cityName">{{city.cityName}}</option>
+          
+</select></td></tr>
+                  <tr class="tablestyle">
+                 
+  <th>Locality</th><td><select ng-model="mapped.location"" >
+<option ng-repeat="loca in localist| filter: mapped.city" ng-value="loca.locName">{{loca.locName}}</option>
+          
+ </select></td></tr>
+<tr class="tablestyle">
+                 
+                  <th>Car Type</th><td><select id="cab" ng-model="mapped.carType" ng-change="cartypechanged()">
+ <option ng-repeat="car in carlist" ng-value="car.carType">{{car.carType}}</option>
+          
+ </select></td></tr>
+
+                  <tr class="tablestyle">
+                 
+                  <th>Mininum Bill Charge</th><td id="mBill">
+                  <!-- {{car.minBill}} --> <!-- <input type="text" ng-model="mapped.minBill" value="car.minBill"/> --> 
+                  <!--   {{car.minBill| filter: mapped.carType}} -->
+                  </td></tr>
+                  <tr class="tablestyle">
+                  <th>Free KM's</th><td id="KM"><!-- <input type="text" ng-model="mapped.freeKM"/> --></td></tr>
+                <tr class="tablestyle">
+                  <th>Waiting Charge</th><td id="wCharge" ><!-- <input type="text" ng-model="mapped.waitingCharge"/> --></td></tr>
+                  <tr class="tablestyle">
+                  <th>Extra PerKM Charge</th><td id="amt"><!-- <input type="text" ng-model="mapped.chargeperKM"/> --></td></tr>
+                 <tr class="tablestyle"><td><button ng-click="add()" class="btn btn-primary">Add</button></td>
+<td><button ng-click="update()" class="btn btn-primary">Update</button></td></tr>
+
+                 <tr> </tr>          <tr>
+                 <th>ID</th>
+                   <th>City</th>
+<th>Locality</th>
+ <th>Car  Type</th>
+
+ <th>Mininum Bill Charge</th>
+ <th>Free KM</th>
+ <th>Waiting Charge</th>
+ <th>Extra PerKM Chage</th>
+</tr>
+ <tr ng-repeat=" mapped in mappedlist">
+
+ <td>{{mapped.ID=$index+1}}</td>
+ <td>{{mapped.city}}</td>
+ <td>{{mapped.location}}</td>
+             <td>{{mapped.carType}}</td>
+                                 <td>{{mapped.minBill}}</td>
+                                  <td>{{mapped.freeKM}}</td>
+                                    <td>{{mapped.waitingCharge}}</td>
+     <td>{{mapped.chargeperKM}}</td>
+     <td><button ng-click="remove(mapped)" class="btn btn-danger">Remove</button></td>
+                                  <td><button ng-click="edit(mapped)" class="btn btn-primary">Edit</button></td>
+                                  </tr>
+
+                          </tbody>
+               </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- 
+  <div class="modal fade" id="myModal4" role="dialog" style="overflow:hidden;">
+    <div class="modal-dialog modal-lg" style="width:100%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Driver</h4>
+        </div>
+        <div class="modal-body">
+            <table class="table">
+                         
+                          <tbody>
+                                <tr class="tablestyle">
+                  <th>Working for which City </th><td><input type="text" ng-model="car.carType"/></td></tr>
+                  <tr class="tablestyle">
+                 
+                  <th>Mininum Bill Charge</th><td><input type="text" ng-model="car.minBill"/></td></tr>
+                  
+                  <tr class="tablestyle">
+                  <th>Free KM's</th><td><input type="text" ng-model="car.freeKM"/></td></tr>
+                <tr class="tablestyle">
+                  <th>Waiting Charge</th><td><input type="text" ng-model="car.waitingCharge"/></td></tr>
+                  <tr class="tablestyle">
+                  <th>Extra PerKM Charge</th><td><input type="text" ng-model="car.chargeperKM"/></td></tr>
+                 <tr class="tablestyle"><td><button ng-click="addCar()" class="btn btn-primary">Add</button></td>
+                          <td><button ng-click="updateCar()" class="btn btn-primary">Update</button></td></tr>
+
+                 <tr> </tr>                                       <tr>
+                 <th>Car ID</th>
+
+                            <th>Car  Type</th>
+                                  <th>Mininum Bill Charge</th>
+                                  <th>Free KM</th>
+                                  <th>Waiting Charge</th>
+                                  <th>Extra PerKM Chage</th>
+                                  </tr>
+                                  <tr ng-repeat=" car in carlist">
+
+                                  <td>{{car.carID=$index+1}}</td>
+                                  <td>{{car.carType}}</td>
+                                   <td>{{car.minBill}}</td>
+                                    <td>{{car.freeKM}}</td>
+                                     <td>{{car.waitingCharge}}</td>
+                                      <td>{{car.chargeperKM}}</td>
+                                  <td><button ng-click="removeCar(car)" class="btn btn-danger">Remove</button></td>
+                                  <td><button ng-click="editCar(car)" class="btn btn-primary">Edit</button></td>
+                                  </tr>
+
+                          </tbody>
+               </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  

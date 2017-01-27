@@ -1,0 +1,288 @@
+<style>
+.navbar {
+    border-radius: 0px !important;
+        margin-bottom: 0% ! important; 
+}
+
+.main_banner {
+    width: 100%;
+    float: left;
+    clear: both;
+    margin-top: -2%;
+    overflow: hidden;
+    position: relative;
+    height:580px;
+}
+.main_banner .main_banner_video {
+    text-align: center;
+    z-index: 1;
+    width: 100%;
+    height: 605px;
+}
+
+.banner_content {
+    width: 100%;
+    float: left;
+    position: absolute;
+    min-height: 405px;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+.fixed_outer {
+    width: 1182px;
+    margin: 0 auto;
+}
+
+.fixed_inner {
+    width: 100%;
+    float: left;
+        margin-top: 4%;
+}
+.book_btn {
+    float: left;
+    width: 100%;
+    margin-top: 25px;
+    }
+    .banner_content h2 {
+    width: 100%;
+    float: left;
+    text-align: center;
+    
+    color: #222;
+    text-shadow: 0 0 10px #000;
+    margin-top: 180px;
+}
+.book_btn a {
+    background: #222;
+    color: #fff;
+    padding: 10px 30px;
+}
+ #map {
+        height: 400px;
+        width: 100%;
+       }
+       .bgimg
+       {
+        height: 200px;
+    width: 100%;
+       }
+ #bg-imgcontent
+       {
+        margin-top: -13%;
+    width: 40%;
+    color: white;
+       }
+       .mybtn
+       {
+        background-color: #222;
+        color: white;
+            margin-left: 36%;
+       }
+div.features ul li.first {
+    background-image: url(../resources/images/first.png);
+}
+div.features ul li.second {
+    background-image: url(../resources/images/second.png);
+}
+div.features ul li.third {
+    background-image: url(../resources/images/third.png);
+}
+div.features ul li {
+    float: left;
+    font-size: 15px;
+    background-repeat: no-repeat;
+    width: 250px;
+    min-height: 84px;
+    padding: 0;
+    margin: 0 0 0 25px;
+    text-indent: 87px;
+    list-style-type: none;
+    line-height: 84px;
+    color: #333;
+}
+  
+</style>
+
+<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script> -->
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMjJMXKBvgE5bP4lsRJjb4wV75s_cqQ3k?libraries=places&sensor=false"></script> -->
+
+<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/place/autocomplete/json?input=india&key=AIzaSyCMjJMXKBvgE5bP4lsRJjb4wV75s_cqQ3k&sensor=false"></script> -->
+<div style="    overflow: hidden;">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+<div class="main_banner">
+    <div class="main_banner_video">
+<video preload="true" poster="../resources/images/map_iframe.jpg" loop="" autoplay="true" id="inReadPlayer">
+<source src="../resources/images/Banner_v9.mp4" type="video/mp4">
+<source src="../resources/images/Banner_v9.ogv" type="video/ogg; codecs=theora, vorbis">
+<source src="../resources/images/Banner_v9.webm" type="video/webm; codecs=vp8, vorbis">
+</video>
+  
+  <video preload="true" poster="../resources/images/map_iframe.jpg" loop="" autoplay="true" id="mobile" controls="" autobuffer="">
+<source src="../resources/images/Banner_v9.m4v" type="video/mp4">
+<source src="../resources/images/Banner_v9.mp4" type="video/mp4">
+<source src="../resources/images/Banner_v9.ogv" type="video/ogg">
+<source src="../resources/images/Banner_v9.webm" type="video/webm">
+</video>
+  
+  <img src="../resources/images/map_iframe.jpg" class="gif_image">
+
+    </div>
+    <div class="banner_content">
+  <div class="fixed_outer">
+      <div class="fixed_inner">
+    <h2> Book A Cab Using Our Any Time Cab <br> In Just Two Steps </h2>
+
+        
+    <div class="book_btn"><a href="#/booking" title="Book Now">Book Now</a></div>
+
+      </div>
+  </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+<img src="../resources/images/bg-img.jpg" style="width:100%;height: 200px;"/>
+<div style="width: 40%;margin-top: -14%;margin-left: 31%;color: white; text-align: center;">
+<h1>Welcome</h1>
+
+<p style="font-size:19px;">Any Time Cab is the smartest way to get around. One tap and a car comes directly to you. Your driver knows exactly where to go. And you can pay with either cash or card.</p></div></div></div>
+<div class="row">
+ 
+        <div class="col-md-4" style="margin-top:3%;margin-left: 1%;">
+<h3 style="    margin-left: 16%;
+    margin-top: 2%;">Distance & Fare Calculator</h3>
+<div style="margin-top: -1%;">
+ 
+  <div class="panel panel-default" style="border: none;background-color: rgb(235, 235, 235);    width: 100%;">
+        <div class="panel-body">
+          
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="origin" class="col-sm-3 control-label">From</label>
+              <div class="col-sm-8">
+                <input type="text" id="origin" class="form-control" ng-model="directions.origin" googleplace />
+                <!-- ng-model="directions.origin" googleplace -->
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="destination" class="col-sm-3 control-label">To</label>
+              <div class="col-sm-8">
+                <input type="text" id="destination" class="form-control" ng-autocomplete ng-model="directions.destination" googleplace1 />
+              </div>
+            </div>
+                        <div class="form-group">
+             
+           <label for="origin" class="col-sm-3 control-label">Distance in Kms</label><div class="col-sm-8" id="distance" >
+        
+              </div>
+              </div>
+              
+                          <div class="form-group">
+             
+                       <label for="origin" class="col-sm-3 control-label">Driving Time</label> <div class="col-sm-8">
+                       <div  id="duration" ></div>
+        
+              </div>
+              </div>
+
+                          <div class="form-group">
+             
+                       <label for="origin" class="col-sm-3 control-label">Approximate Fare</label> <div class="col-sm-8">
+                       <div  id="duration" ></div>
+        
+              </div>
+              </div>
+            <div class="form-group">
+           
+
+                <button class="btn mybtn" ng-click="getDirections()">Calculate</button>
+              </div>
+              </form>
+            </div>
+
+        </div>  
+</div>
+      </div>
+ 
+        
+        <div class="col-md-8" style="margin-left: 33%;
+    margin-top: -26%;">
+        <div class="features">
+        <ul>
+            <li class="left first"><h2>Convenience</h2>
+                <p style="    line-height: 39px;
+    margin-top: 19%;">
+                    Book within seconds and  get instant confirmations. Easy online payments or cash on delivery. Booking car rentals will never be a headache again!
+                </p>
+            </li>
+            <li class="second"><h2>Quality</h2>
+                <p style="    line-height: 39px;
+    margin-top: 19%;">
+                    Our cars are audited for cleanliness, safety and comfort. Our drivers are well trained and reliable. Sit back and enjoy the Any Time Cab experience!
+                </p>
+            </li>
+            <li class="third"><h2>Control</h2>
+                <p style="    line-height: 39px;
+    margin-top: 19%;">
+                    We have clear and transparent pricing listed online. Never haggle with drivers again on payments and be confident and assured of what you are being charged for!
+                </p>
+            </li>
+        </ul>
+        </div></div>
+        
+      </div>
+</div>
+
+<!-- 
+<div class="row">
+    <div class="col-md-12">
+      <div class="row">
+       <div class="col-md-1">
+        </div>
+        <div class="col-md-7">
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">On Time Pickup</a></li>
+    <li><a data-toggle="tab" href="#menu1">Wallet Payment</a></li>
+    <li><a data-toggle="tab" href="#menu2">Secured App</a></li>
+    <li><a data-toggle="tab" href="#menu3">Cashless Ride</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+     
+      <p>We extend an efficient taxi service with prompt responses and point-to-point pickups providing a whole new booking experience.</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+     
+      <p>The users are given the unique opportunity to make payments via e-wallets for a quicker and convenient transactions.</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+     
+      <p>
+Placing safety of the passengers first, the application is enabled with secure servers to protect the privacy and security of the user information</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+     
+      <p>
+We offer you the exclusive feature to receive referral bonus for the friends you refer to books rides through our application</p>
+    </div>
+  </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+         <div class="col-md-1">
+        </div>
+      </div>
+    </div>
+  </div> -->
+   
+</div>
+
